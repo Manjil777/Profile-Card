@@ -1,0 +1,260 @@
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --first-color: hsl(210, 100%, 50%); /* Brighter Blue */
+  --second-color: hsl(150, 100%, 38%);
+  --title-color: hsl(230, 30%, 15%); /* Darker for contrast */
+  --text-color: hsl(230, 10%, 40%); /* Darker Gray */
+  --gray-color: hsl(210, 8%, 90%); /* Lighter Gray */
+  --border-color: hsl(230, 4%, 92%);
+  --body-color: hsl(230, 100%, 98%);
+  --container-color: hsl(0, 0%, 100%);
+  --bg-color-dark: hsl(230, 17%, 14%);
+  --text-color-dark: hsl(230, 34%, 90%);
+
+  --body-font: 'Poppins', sans-serif; /* More modern font */
+  --h2-font-size: 1.3rem; 
+  --normal-font-size: 1rem;
+  --transition: all 0.3s ease;
+}
+
+.dark-theme {
+  --body-color: var(--bg-color-dark);
+  --container-color: hsl(230, 17%, 20%);
+  --text-color: var(--text-color-dark);
+  --gray-color: hsl(230, 24%, 25%);
+  --border-color: hsl(230, 4%, 40%);
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; 
+}
+
+a {
+  text-decoration: none;
+  color: var(--first-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--second-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+.container {
+  padding-block: 2rem;
+  perspective: 1000px;
+  position: relative; /* To contain animated icons */
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--container-color);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: var(--transition);
+  transform-style: preserve-3d;
+  z-index: 1; /* Ensure card is above icons */
+}
+
+.card:hover {
+  transform: translateY(-5px) rotateX(-5deg) rotateY(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.profile-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.follower-count {
+  font-size: 1rem; 
+  color: var(--text-color);
+  transition: color 0.5s ease;
+  margin-top: 10px; 
+}
+
+.profile {
+  width: 150px;
+  height: 150px;
+  background-color: var(--gray-color);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid var(--container-color);
+  transition: var(--transition);
+  margin: 0 auto 10px auto; /* Adjusted margins */
+}
+
+.profile:hover {
+  transform: scale(1.05);
+}
+
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tooltip {
+  width: 100%;
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+  transition: background-color 0.5s ease;
+}
+
+.content {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header span {
+  color: var(--title-color);
+  font-weight: 500;
+  transition: color 0.5s ease;
+}
+
+.social {
+  display: flex;
+  column-gap: 1rem;
+}
+
+.social a {
+  font-size: 1.3rem;
+  transition: color 0.5s ease, transform 0.2s ease;
+}
+
+.social a:hover {
+  transform: translateY(-3px);
+}
+
+.data {
+  text-align: center;
+}
+
+.name {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  transition: color 0.5s ease;
+}
+
+.profession {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  transition: color 0.5s ease;
+}
+
+.bio {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  transition: color 0.5s ease;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  color: var(--first-color);
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--container-color);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button:hover {
+  background-color: var(--first-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button i {
+  font-size: 1.25rem;
+  transition: color 0.5s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000; 
+}
+
+/* Animated Icons - Gmail */
+.animated-icon {
+  position: fixed;
+  font-size: 2rem; /* Adjust icon size */
+  color: var(--first-color);
+  opacity: 0.7; 
+  z-index: 0; /* Behind the card */
+  animation: moveIcon 8s linear infinite; /* Adjust animation duration */
+}
+
+.left {
+  top: 20%;
+  left: -5%; /* Start off-screen */
+}
+
+.right {
+  bottom: 20%;
+  right: -5%; /* Start off-screen */
+  animation-direction: reverse; 
+}
+
+@keyframes moveIcon {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px); } /* Adjust vertical movement */
+  100% { transform: translateY(0); }
+}
+
+@media screen and (min-width: 540px) {
+  .tooltip {
+      width: 380px;
+  }
+}
